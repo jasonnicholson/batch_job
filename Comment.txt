@@ -1,0 +1,10 @@
+So in this pull request is documentation and cleanup of the batch_job code. 
+
+This is my first pull request and I realize this pull request might be overwhelming. Here is an overview:
+
+- Formatted documentation.
+- A new example. More to come. The one I provided needs some work. batch_job and Simulink don't always play nice.
+- I cleaned up some of your input parsing for clarity. The code is harder to track when you use a cell array and dump the elements of each cell as inputs to the function call. It is a slick trick but hard read when new to batch job.
+
+That's it for now.
+

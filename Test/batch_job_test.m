@@ -11,8 +11,9 @@ out2 = batch_job_distrib(@slow_func, I, '-progress','-keep');
 t2 = toc;
 
 tic;
+out1 = nan(3,3, I(end));
 for a = I
-    out1(:,:,a) = slow_func(a); %#ok<AGROW>
+    out1(:,:,a) = slow_func(a);
 end
 t1 = toc;
 

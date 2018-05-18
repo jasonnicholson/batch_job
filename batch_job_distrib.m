@@ -183,7 +183,7 @@ end
 % Check the worker cell array makes sense
 for iWorker = 1:size(workers, 1)
     assert(ischar(workers{iWorker,1}), '%d worker name is not a character array.', iWorker);
-    assert(isPositiveInteger(workers{iWorker,2}), 'The number of workers for %d worker name is not a positive integer.', iWorker);
+    assert(isposint(workers{iWorker,2}), 'The number of workers for %d worker name is not a positive integer.', iWorker);
     if isequal(workers{iWorker,1}, '')
         % Start one less if we use this MATLAB instance too
         workers{iWorker,2} = workers{iWorker,2} - (~async && timeout == 0); 

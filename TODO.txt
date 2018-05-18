@@ -1,0 +1,4 @@
+1. More extensive testing.
+2. Better debugging. Add a debugging mode. batch_job is not easy to troubleshoot.
+3. Add a better simulink example.
+4. Write the troubleshooting documentation.
