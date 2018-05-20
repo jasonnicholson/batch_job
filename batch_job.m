@@ -257,7 +257,8 @@ mo = open_mmap(s.output_mmap);
 % Set the data
 mo.Data.index = uint32(2);
 mo.Data.timeout(:) = Inf;
-mo.Data.finished(:) = false;mo.Data.output(:,1) = output(:);
+mo.Data.finished(:) = false;
+mo.Data.output(:,1) = output(:);
 mo.Data.output(:,2:end) = NaN;
 
 % Start the other workers
@@ -318,8 +319,6 @@ end
 
 %%
 function local_loop(func, mi, mo, s)
-% Flag as starting
-mo.Data.finished(1) = false;
 % Initialize values
 N = size(mi.Data.input, 2);
 n = uint32(s.chunk_size);
