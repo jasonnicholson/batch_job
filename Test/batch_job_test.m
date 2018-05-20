@@ -1,4 +1,4 @@
-function batch_job_test
+function [out1, out2] = batch_job_test()
 % Test two methods work and give the same result as a normal for loop
 I = 1:500;
 
@@ -32,12 +32,13 @@ end
 
 function out = random_func(in, sz)
 assert(mod(in, 13) ~= 0, 'Unlucky for some');
-seed = now;
-seed = floor((seed - floor(seed)) * 2^32);
+seed = now() * 1000;
+seed = floor((seed - floor(seed)) * (2 ^ 32));
 rng(seed);
 if nargin < 2
     sz = 2; %ceil(rand(1) * 3);
 end
 out = rand(sz);
-pause(rand(1) * 1.1);
+t = rand(1) * 4.4;
+pause(t);
 end

@@ -257,8 +257,7 @@ mo = open_mmap(s.output_mmap);
 % Set the data
 mo.Data.index = uint32(2);
 mo.Data.timeout(:) = Inf;
-mo.Data.finished(:) = true;
-mo.Data.output(:,1) = output(:);
+mo.Data.finished(:) = false;mo.Data.output(:,1) = output(:);
 mo.Data.output(:,2:end) = NaN;
 
 % Start the other workers
@@ -285,8 +284,6 @@ end
 
 %%
 function worker_loop(func, mi, mo, s, worker)
-% Flag as starting
-mo.Data.finished(worker) = false;
 % Initialize values
 N = size(mi.Data.input, 2);
 n = uint32(s.chunk_size);
@@ -380,8 +377,7 @@ end
 while ~all(mo.Data.finished)
     pause(0.05);
     % Display progress
-    ind = mo.Data.index;
-    progress(ind/N);
+    progress(double(mo.Data.index)/N);
     % Check for timed-out processes
     for worker = 1:numel(mo.Data.timeout)
         if mo.Data.timeout(worker) > now()
